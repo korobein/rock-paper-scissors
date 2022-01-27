@@ -21,7 +21,11 @@ function computerPlay(){
 function playerPlay() {
    do {
        choose = prompt("Rock, Paper or Scissors?");
-       choose = choose.toLowerCase();
+       if (choose !== null) {
+        choose = choose.toLowerCase();
+       } else if (choose === null){
+           break;
+       }
    } while (choose !== "rock" && choose !== "paper" && choose !== "scissors");
    return choose;
 }
@@ -42,6 +46,8 @@ function playRound(playerSelection,computerSelection){
         console.log("You lost this one!")
         computerCount++;
         console.log(`The AI score is ${computerCount}`)
+    } else if (playerSelection === null) {
+        console.log("You lost this one because you didn't choose :(");
     } else {
         console.log("You won this one!")
         playerCount++;
