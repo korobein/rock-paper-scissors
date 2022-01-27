@@ -1,6 +1,7 @@
 let choose;
 let playerCount = 0;
 let computerCount = 0;
+let playerPlay
 
 function computerPlay(){
     let pcPlay = Math.floor((Math.random()*3)+1);
@@ -18,54 +19,52 @@ function computerPlay(){
     return pcPlay.toLowerCase();
 }
 
-function playerPlay() {
-   do {
-       choose = prompt("Rock, Paper or Scissors?");
-       if (choose !== null) {
-        choose = choose.toLowerCase();
-       } else if (choose === null){
-           break;
-       }
-   } while (choose !== "rock" && choose !== "paper" && choose !== "scissors");
-   return choose;
-}
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        playerPlay = button.id;
+        playRound();
+    })
+})
+
+const playerChoose = document.querySelector('#playerChoose');
+const pcChoose = document.querySelector('#pcChoose');
+const playerScore = document.querySelector('#playerScore');
+const pcScore = document.querySelector('#pcScore');
+const currentStatus = document.querySelector('#currentStatus')
+
+currentStatus.style.fontSize = '35px';
 
 function playRound(playerSelection,computerSelection){
-    playerSelection = playerPlay();
+    playerSelection = playerPlay;
     computerSelection = computerPlay();
-    console.log(`You chose ${playerSelection}`);
-    console.log(`The AI chose ${computerSelection}`);
+    playerChoose.textContent = `You chose ${playerSelection}`;
+    pcChoose.textContent= `The AI chose ${computerSelection}`;
     if (playerSelection === computerSelection) {
-        console.log("It's a tie game!")
     } else if (
         (playerSelection === "rock" && computerSelection === "paper") ||
         (playerSelection === "paper" && computerSelection === "scissors") ||
         (playerSelection === "scissors" && computerSelection === "rock")
-
     ){
-        console.log("You lost this one!")
         computerCount++;
-        console.log(`The AI score is ${computerCount}`)
-    } else if (playerSelection === null) {
-        console.log("You lost this one because you didn't choose :(");
     } else {
-        console.log("You won this one!")
         playerCount++;
-        console.log(`The player score is ${playerCount}`)
+    }
+
+    playerScore.textContent = `Player score is ${playerCount}`;
+    pcScore.textContent = `AI score is ${computerCount}`;
+
+    if (playerCount === 5){
+        currentStatus.textContent = "Player is the winner!";
+        playerCount = 0;
+        computerCount= 0;
+    } else if (computerCount === 5){
+        currentStatus.textContent = "Ai is the winner!";
+        playerCount = 0;
+        computerCount= 0;
+    } else {
+        currentStatus.textContent = '';
     }
 } 
 
-function game() {
-    for (let i = 0; i <= 4; i++) {
-        playRound();
-    }
-    if (playerCount === computerCount) {
-        console.log("The match is a tie!");
-    } else if ( playerCount > computerCount) {
-        console.log("Player is the winner")
-    } else if ( playerCount < computerCount) {
-        console.log("The AI is the winner")
-    }
-    playerCount = 0;
-    computerCount = 0;
-}
