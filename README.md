@@ -1,1 +1,1 @@
-# rock-paper-scissors
+Un sencillo juego de piedra, papel o tijeras. ¡Al mejor de cinco!

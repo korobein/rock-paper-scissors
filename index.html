@@ -1,22 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Rock, Paper, Scissors!</title>
-</head>
-<body>
-    <button id="rock">Rock</button>
-    <button id="paper">Paper</button>
-    <button id="scissors">Scissors</button>
+    <head>
+        <title>RPS 2.0</title>
+        <meta charset="utf-8">
+        <script src="./game.js" defer></script>
+        <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+        <h1>¡Piedra, Papel o Tijeras!</h1>
 
-    <div id="scores">
-        <h1>Current match</h1>
-        <p id="playerChoose"></p>
-        <p id="pcChoose"></p>
-        <p id="playerScore"></p>
-        <p id="pcScore"></p>
-        <p id="currentStatus"></p>
-    </div>
-    <script src="game.js"></script>
-</body>
+        <div id="pantalla-juego">
+            <div id="playground">
+                <div id="pcPlay">
+                    <img src="./img/signopregunta.png" alt="un signo de pregunta" id="pc-play">
+                </div>
+                <h2 id="ganador">¡Elige!</h2>
+                <div id="playerPlay">
+                    <input type="image" name="player-rock"  id="0" src="./img/hands/piedra2-removebg-preview.png">
+                    <input type="image" name="player-rock"  id="1" src="./img/hands/papel2-removebg-preview.png ">
+                    <input type="image" name="player-rock"  id="2" src="./img/hands/tijeras2-removebg-preview.png">
+                 </div>
+            </div>
+            <div>
+                <h2 style="font-size: 30px;">Puntajes</h2>
+                <div id="puntajes">
+                    <div>
+                        <h2>Jugador</h2>
+                        <h2 id="jugCont">0</h2>
+                    </div>
+                    <div>
+                        <h2>I.A.</h2>
+                        <h2 id="pcCont">0</h2>
+                    </div>
+                </div>
+                
+                <button id="newgame">Reiniciar</button>
+            </div>
+        </div>
+
+        
+    </body>
 </html>
